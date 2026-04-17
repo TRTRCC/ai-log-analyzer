@@ -24,7 +24,7 @@ setup_logging()
 logger = get_logger(__name__)
 
 # Import API routers
-from app.api import auth, logs, analysis, reports, admin
+from app.api import auth, logs, analysis, reports, admin, security, backup
 
 
 @asynccontextmanager
@@ -209,6 +209,8 @@ app.include_router(logs.router, prefix="/api/v1/logs", tags=["Logs"])
 app.include_router(analysis.router, prefix="/api/v1/analysis", tags=["Analysis"])
 app.include_router(reports.router, prefix="/api/v1/reports", tags=["Reports"])
 app.include_router(admin.router, prefix="/api/v1/admin", tags=["Admin"])
+app.include_router(security.router, prefix="/api/v1/security", tags=["Security"])
+app.include_router(backup.router, prefix="/api/v1/backup", tags=["Backup"])
 
 
 if __name__ == "__main__":
